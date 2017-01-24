@@ -1,0 +1,94 @@
+<!DOCTYPE>
+<html ng-app="register">
+  <head>
+  	<title>loginRegister</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body ng-controller="register">
+
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner" role="listbox">
+    		<div class="item active">
+      			<img src="img/reg1.jpg" alt="Chania">
+    		</div>
+
+		    <div class="item">
+		    	<img src="img/reg2.jpg" alt="Chania">
+		    </div>
+
+		    <div class="item">
+		    	<img src="img/reg3.jpg" alt="Flower">
+		    </div>
+		</div>
+  	</div>
+<div class="container index">
+<!--
+    Registration Box starts
+  -->
+<div ng-hide="RegisterBox" class="register box-container">
+
+  <div class="heading">
+    <h2 class="login-heading">Register</h2>
+  </div>
+
+  <!-- User name Text Field -->
+  <div class="input-group username-group">
+    <span class="input-group-addon iconbg">
+      <i class="glyphicon glyphicon-user"></i>
+      </span>
+      <input id="register-username" type="text" ng-model="username"  class="form-control inputbg" name="username" value="" placeholder="username " ng-keyup="keyup_uncheck()" ng-keydown="keydown_uncheck()" ng-blur="blur_uncheck()"  ng-change="change_uncheck()">
+  </div>
+
+  <!-- ALert Box When username is already taken -->
+  <div class="alert-group" ng-hide="RegisterAlert">
+      <div class="alert alert-danger">
+      This username is already taken.
+      </div>
+  </div>
+  <!-- email_id  Text Field -->
+  <div class="input-group username-group" ng-form ="myform">
+    <span class="input-group-addon iconbg">
+      <i class="glyphicon glyphicon-user"></i>
+      </span>
+      <input id="email_id" type="email" ng-model="email_id"  class="form-control inputbg" name="email_id" value="" placeholder="email" >
+</div>
+  <div class="alert-group" ng-hide="myform.email_id.$valid">
+      <div class="alert alert-danger">
+      email_id Not valid
+      </div>
+  </div>
+<form ng-submit="register()" >
+  <!-- Password Text Field -->
+  <div class="input-group password-group" ng-form ="myformz">
+      <span class="input-group-addon iconbg">
+      <i class="glyphicon glyphicon-lock"></i>
+      </span>
+      <input id="register-password" type="password" ng-model="password"  class="form-control inputbg"  ng-maxlength="10" name="password" placeholder="password">
+  </div>
+
+  <!-- Alert for password field -->
+  <div class="alert-group" ng-show="myformz.$error.maxlength">
+      <div class="alert alert-danger">
+      Password should under <10 characters
+      </div>
+  </div>
+  <!-- Button to Register -->
+  <div class="input-group">
+    <button type="submit" id="btn-login" class="btn btn-login btnbg" >
+      Register
+      </button>
+  </div>
+</form>
+  <!-- Link for Login -->
+  <div class="signup-box">
+    <h4>Already have an account ? <u><span ng-click="toggle_login()">SignIn</span></u></h4>
+  </div>
+</div>
+</div>
+<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src = "js/script2.js"></script>
+<script src = "https://code.jquery.com/jquery-3.1.1.min.js"></script>
+ <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
