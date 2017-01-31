@@ -20,8 +20,7 @@ app.controller('register', function ($scope,$http,$timeout,$window) {
           .success(function(data, status, headers, config) {
               if(data.is_logged){
                   $scope.LoginAlert = true;
-                  $window.location.href = "/home#?id="+data.id;
-                  console.log("cool");
+                  $window.location.href = "/home#?id="+data.id;                
               }else{
                   $scope.LoginAlert = false;
               }

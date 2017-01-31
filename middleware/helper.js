@@ -4,10 +4,12 @@ var self={
 			Function required to run all the queries.
 		*/
 		var db_conncetion=data.connection;
+		console.log("dataconn");
 		var query=data.query;
 		var insert_data=data.insert_data;
 		db_conncetion.getConnection(function(err,con){
 			if(err){
+					console.log("dataconn");
 			  con.release();
 			}else{
 				db_conncetion.query(String(query),insert_data,function(err,rows){

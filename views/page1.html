@@ -1,16 +1,19 @@
-
-<html ng-app="home">
+<!DOCTYPE>
+<html ng-app="Page1">
   <head>
-    <title>Home DataBase</title>
+    <title>Page1</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+ <script src="js/angular-route.js"></script> -->
   </head>
-  <body ng-controller="home_cntrl">
+  <body ng-controller="Page_cntrl">
     <nav class="navbar-default ">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -29,24 +32,24 @@
       <div class="table-responsive">
 <table class="table" style="width='100%'">
   <thead>
-    <tr ng-repeat="x in mydata|limitTo:1">
-      <th ng-repeat="(key,data) in x" >{{key}}</th>
+    <tr>
+      <th ng-repeat="(key,data) in mydata">{{key}}</th>
     </tr>
   </thead>
   <tbody >
-    <tr ng-repeat="(y,x) in mydata track by $index" ng-mouseover="rowStyle={'background-color': '#66ff66'}; grid.appScope.onRowHover(this);" ng-mouseleave="rowStyle={}" ng-click="clickHandler(x)" >
-      <td ng-repeat="(key,data) in x" ng-style="rowStyle">{{data}}</td>
+    <tr ng-mouseover="rowStyle={'background-color': '#66ff66'}; grid.appScope.onRowHover(this);" ng-mouseleave="rowStyle={}" >
+      <td ng-repeat="(key,data) in mydata" ng-style="rowStyle">{{data}}</td>
     </tr>
   </tbody>
 </table>
 </div>
 </div>
-<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-<script src = "js/home_script.js"></script>
+
+<script src = "js/page1.js"></script>
 <script src = "https://code.jquery.com/jquery-3.1.1.min.js"></script>
  <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" charset="utf-8"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-resource.js" charset="utf-8"></script>
+
   <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
   </body>
 </html>

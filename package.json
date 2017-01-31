@@ -1,16 +1,16 @@
 {
-  "name": "Real-Time-Private-Chatting-Codershood",
+  "name": "Real-Time-Private-Chatting",
   "version": "0.0.1",
-  "description": "Real-Time-Private-Chatting-Codershood",
-  "author": "Shashank Tiwari",
-  "license": "MIT",
+  "description": "Real-Time-Private-Chatting",
+  "author": "Vivek_H",
+  "license": "TAS",
   "dependencies": {
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "cookie-parser": "^1.4.1",
     "body-parser": "^1.15.0",
     "mysql": "^2.10.2",
-    "socket.io": "^1.4.5",
+    "socket.io": "^1.4.6",
     "ejs": "^2.4.1",
     "multer": "^1.1.0"
   }

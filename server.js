@@ -38,7 +38,7 @@ var Session= Session({
  even if it made no changes*/
 });
 
-//Registers a middleware, which is a function that gets executed forevery incoming Socket 
+//Registers a middleware, which is a function that gets executed forevery incoming Socket
 io.use(function(socket, next) {
 	    Session(socket.request, socket.request.res, next);
 });
@@ -58,6 +58,11 @@ var connection_object= new db();
 var connection=connection_object.connection; // getting conncetion object here
 /* requiring config db.js file ends*/
 
+/* requiring config db.js file starts*/
+var dbb = require("./middleware/db2.js");
+var connection_objects= new dbb();
+var connections=connection_objects.connections; // getting conncetion object here
+/* requiring config db.js file ends*/
 
 /*
 	1. Requiring auth-routes.js file, which takes care of all Login & Registration page operation.
@@ -70,7 +75,7 @@ require('./middleware/auth-routes.js')(app,connection,Session,cookieParser,sessi
 	2. Passing object of express, Database connection and object of socket.io as 'io'.
 	3. routes.js contains the methods and routes for Home page
 */
-require('./middleware/routes.js')(app,connection,io,Session,cookieParser,sessionInfo);
+require('./middleware/routes.js')(app,connections,io,Session,cookieParser,sessionInfo);
 
 /*
 	Running our application

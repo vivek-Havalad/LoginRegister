@@ -3,11 +3,11 @@ var bodyParser = require('body-parser');
 
 // requiring Helper file to run helper functions
 var helper = require('./helper');
-exports.helper = helper;
+
 
 var method=routes.prototype;
 
-function routes(app,connection,io,sessionInfo){
+function routes(app,connections,io,sessionInfo){
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
@@ -23,7 +23,7 @@ function routes(app,connection,io,sessionInfo){
 	*/
 	io.on('connection',function(socket){
 
-
+console.log("connected");
 
 		var uIdSocket=socket.request.session.uid;
 
@@ -33,7 +33,7 @@ function routes(app,connection,io,sessionInfo){
 	    	/*
 	    		Adding Single socket user into 'uesrs' array
 	    	*/
-
+console.log("userInfo");
 			var should_add=true;
 	    	if(users.length == 0){
 	    		userinfo.socketId=socket.id;
@@ -49,13 +49,26 @@ function routes(app,connection,io,sessionInfo){
 	    			users.push(userinfo);
 			    };
 	    	}
-
-
-
-
-
 	    	should_add=true;
 	    });
+
+			var data={
+				query:"SELECT * from employees",
+				connection:connections
+			};
+			var check_connection = function(data,callBack){
+
+				helper.queryRunner(data,function(result){
+					if(result){
+			callBack(result);
+			}
+			});
+			};
+check_connection(data,function(result){
+socket.emit("UsersData",result);
+});
+
+
 
 	   	/*
 			'sendMsg' will save the messages into DB.
@@ -95,10 +108,10 @@ function routes(app,connection,io,sessionInfo){
 	/*
 		post to handle get_userinfo request
 	*/
-	app.post('/get_userinfo', function(req, res){
+	app.post('/load', function(req, res){
 		var data={
-			query:"select id,userName from users where id='"+req.body.uid+"'",
-			connection:connection
+			query:"SELECT * from employees",
+			connection:connection2
 		}
 		helper.queryRunner(data,function(result){
 			if(result.length>0) {
@@ -118,7 +131,7 @@ function routes(app,connection,io,sessionInfo){
 		    		msg:"BAD"
 		    	};
 		    }
-		    res.write(JSON.stringify(result_send));
+		    res.write(JSON.stringify(result));
 			res.end();
 		});
 	});
@@ -153,9 +166,15 @@ function routes(app,connection,io,sessionInfo){
 
 		});
 	});
+	app.get('/page1', function(req, res){
 
-}
+	 res.render('page1');
+	//  res.json(JSON.stringify(body));
+	res.end();
 
+	});
+
+};
 method.getroutes=function(){
 	return this;
 }
