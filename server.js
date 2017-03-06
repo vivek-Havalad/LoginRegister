@@ -58,11 +58,11 @@ var connection_object= new db();
 var connection=connection_object.connection; // getting conncetion object here
 /* requiring config db.js file ends*/
 
-/* requiring config db.js file starts*/
+/* requiring config db2.js file starts*/
 var dbb = require("./middleware/db2.js");
 var connection_objects= new dbb();
 var connections=connection_objects.connections; // getting conncetion object here
-/* requiring config db.js file ends*/
+/* requiring config db2.js file ends*/
 
 /*
 	1. Requiring auth-routes.js file, which takes care of all Login & Registration page operation.
